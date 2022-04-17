@@ -1,0 +1,10 @@
+{
+    "ServerName":"user info manager Server",
+	"GPRCEndpoint": "0.0.0.0:10000",
+	"HTTPEndpoint": "0.0.0.0:10001",
+	"TLS":          false,
+	"CertFilePath": "",
+	"KeyFilePath": "",
+	"MsgSize":     4,
+	"LogLevel": "debug"
+}
