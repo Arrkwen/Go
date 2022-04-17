@@ -1,5 +1,5 @@
 {
-    "ServerName":"user info manager Server",
+    "ServerName":"xpixel.userInfo.UserService",
 	"GPRCEndpoint": "0.0.0.0:10000",
 	"HTTPEndpoint": "0.0.0.0:10001",
 	"TLS":          false,
