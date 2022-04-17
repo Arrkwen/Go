@@ -1,0 +1,8 @@
+{
+	"GPRCEndpoint": "127.0.0.1:10000",
+	"HTTPEndpoint": "127.0.0.1:10001",
+    "ServerHostOverride":"",
+	"TLS":          false,
+	"CaFilePath": "",
+	"LogLevel": "debug"
+}
