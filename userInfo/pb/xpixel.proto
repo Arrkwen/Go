@@ -1,0 +1,50 @@
+syntax="proto3";
+
+import "google/api/annotations.proto";                             // 包含google api 支持http调用
+import "google/protobuf/timestamp.proto";                          // 包含别的proto,引用timestamp
+import "protoc-gen-openapiv2/options/annotations.proto";           // 生成swagger文件所需的proto，swagger 提供一个接口开发文档
+
+option go_package="github.com/Arrkwen/userInfo/api";               // api的包名，提供服务调用
+
+package xpixel.userInfo;                                           // 本包名
+
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {       // swager 文档
+  info: {
+    title: "xpixel-userInfo-service"
+    version: "v0.1.0"
+  }
+};
+
+// 消息定义
+message User{
+    string userId = 1;                               // 用户ID
+    string userImage=2;                              // 用户头像
+    string userPhone=3;                              // 用户账号，手机号
+    string userPassword=4;                           // 用户密码
+    int32 userType=5;                                // 身份类型：普通用户 0，研究人员 1
+    google.protobuf.Timestamp userRegisterTime=6;    // 注册日期：yy-mm-dd:hh:mm:ss
+    string userSchool=7;                             // 学校
+    string userResearch=8;                           // 研究方向
+    string userGithub=9;                             // github 网址
+    string userGoogle=10;                            // 谷歌学术网址
+}
+
+
+message SaveUserInfoRequest{
+    User user=1;
+}
+
+message SaveUserInfoResponse{
+    bool isSuccess = 1;
+}
+
+// 服务定义
+service UserService{
+    rpc SaveUserInfo(SaveUserInfoRequest) returns (SaveUserInfoResponse){
+        option (google.api.http) = {
+			post: "/user"
+		  	body: "*"
+		};
+    }
+}

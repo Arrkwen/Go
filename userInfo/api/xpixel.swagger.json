@@ -1,0 +1,135 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "xpixel-userInfo-service",
+    "version": "v0.1.0"
+  },
+  "tags": [
+    {
+      "name": "UserService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/user": {
+      "post": {
+        "operationId": "UserService_SaveUserInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/userInfoSaveUserInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userInfoSaveUserInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "userInfoSaveUserInfoRequest": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/userInfoUser"
+        }
+      }
+    },
+    "userInfoSaveUserInfoResponse": {
+      "type": "object",
+      "properties": {
+        "isSuccess": {
+          "type": "boolean"
+        }
+      }
+    },
+    "userInfoUser": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "userImage": {
+          "type": "string"
+        },
+        "userPhone": {
+          "type": "string"
+        },
+        "userPassword": {
+          "type": "string"
+        },
+        "userType": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "userRegisterTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "userSchool": {
+          "type": "string"
+        },
+        "userResearch": {
+          "type": "string"
+        },
+        "userGithub": {
+          "type": "string"
+        },
+        "userGoogle": {
+          "type": "string"
+        }
+      },
+      "title": "消息定义"
+    }
+  }
+}
